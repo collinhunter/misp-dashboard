@@ -29,6 +29,5 @@ ADD run.sh /run.sh
 RUN sudo chmod +x /run.sh
 
 VOLUME /var/www/misp-dashboard
-EXPOSE 8001
 
 ENTRYPOINT ["/run.sh"]
