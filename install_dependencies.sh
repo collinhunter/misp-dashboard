@@ -141,6 +141,7 @@ mv temp/jquery-jvectormap-2.0.3.min.js ./static/js
 wget http://jvectormap.com/js/jquery-jvectormap-world-mill.js -O ./static/js/jquery-jvectormap-world-mill.js
 
 # maxmind DB
+MM_LIC="3kAM4NhmnPX6kvhh"
 rm -rf data/GeoLite2-City*
 mkdir -p data
 pushd data
@@ -149,11 +150,11 @@ pushd data
 #read -p "Please paste your Max Mind License key: " ${MM_LIC_KEY}
 while [ "$(sha256sum -c GeoLite2-City.tar.gz.sha256 >/dev/null; echo $?)" != "0" ]; do
   echo "Redownloading GeoLite Assets, if this loops, CTRL-C and investigate"
-  wget "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=${MM_LIC_KEY}&suffix=tar.gz" -O GeoLite2-City.tar.gz
-  wget "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=${MM_LIC_KEY}&suffix=tar.gz.sha256" -O GeoLite2-City.tar.gz.sha256
+  wget "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=${MM_LIC}&suffix=tar.gz" -O GeoLite2-City.tar.gz
+  wget "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=${MM_LIC}&suffix=tar.gz.sha256" -O GeoLite2-City.tar.gz.sha256
   if [[ $? == 6 ]]; then
     echo "Something is wrong with your License Key, please try entering another one. (You DO NOT need a GeoIP Update key) "
-    read -p "Please paste your Max Mind License key: " MM_LIC
+    #read -p "Please paste your Max Mind License key: " MM_LIC
   fi
   sed -i 's/_.*/.tar.gz/' GeoLite2-City.tar.gz.sha256
   sleep 3
