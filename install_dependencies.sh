@@ -5,7 +5,7 @@
 
 ## Debug mode
 #set -x
-
+echo $1
 # Functions
 
 get_distribution() {
