@@ -7,7 +7,7 @@
 #set -x
 
 # Environment
-SET MM_LIC = ${MM_LIC_KEY}
+set MM_LIC = ${MM_LIC_KEY}
 
 
 # Functions
