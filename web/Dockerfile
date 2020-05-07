@@ -12,12 +12,6 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 ARG MM_LIC_KEY
 
-RUN echo "MM_LIC_KEY: {$MM_LIC_KEY}"
-
-ENV MM_LIC = $(MM_LIC_KEY}
-
-RUN echo "MM_LIC: ${MM_LIC}"
-
 # Setup www dir
 WORKDIR /var/www
 RUN chown www-data:www-data /var/www
@@ -27,7 +21,7 @@ USER www-data
 RUN git clone --branch master https://github.com/collinhunter/misp-dashboard.git
 WORKDIR /var/www/misp-dashboard
 RUN sudo pip3 install -r requirements.txt
-RUN VIRTUAL_ENV="TUTU"; sudo ./install_dependencies.sh $MM_LIC
+RUN VIRTUAL_ENV="TUTU"; sudo ./install_dependencies.sh $MM_LIC_KEY
 
 
 #Run misp-dashboard
