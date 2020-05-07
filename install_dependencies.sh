@@ -141,13 +141,12 @@ mv temp/jquery-jvectormap-2.0.3.min.js ./static/js
 wget http://jvectormap.com/js/jquery-jvectormap-world-mill.js -O ./static/js/jquery-jvectormap-world-mill.js
 
 # maxmind DB
-MM_LIC="3kAM4NhmnPX6kvhh"
 rm -rf data/GeoLite2-City*
 mkdir -p data
 pushd data
 # The following lines do not work any more, see: https://blog.maxmind.com/2019/12/18/significant-changes-to-accessing-and-using-geolite2-databases/
 #wget http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz -O GeoLite2-City.tar.gz
-#read -p "Please paste your Max Mind License key: " ${MM_LIC_KEY}
+#read -p "Please paste your Max Mind License key: " ${MM_LIC}
 while [ "$(sha256sum -c GeoLite2-City.tar.gz.sha256 >/dev/null; echo $?)" != "0" ]; do
   echo "Redownloading GeoLite Assets, if this loops, CTRL-C and investigate"
   wget "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=${MM_LIC}&suffix=tar.gz" -O GeoLite2-City.tar.gz
