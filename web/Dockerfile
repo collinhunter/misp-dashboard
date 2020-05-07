@@ -20,8 +20,9 @@ USER www-data
 #Start installing dashboard
 RUN git clone --branch master https://github.com/collinhunter/misp-dashboard.git
 WORKDIR /var/www/misp-dashboard
-RUN sudo pip3 install -r requirements.txt
-RUN VIRTUAL_ENV="TUTU"; sudo ./install_dependencies.sh $MM_LIC_KEY
+RUN cd /var/www/misp-dashboard
+RUN sudo -H pip3 install -r requirements.txt
+RUN VIRTUAL_ENV="TUTU"; sudo -H ./install_dependencies.sh $MM_LIC_KEY
 
 
 #Run misp-dashboard
@@ -29,5 +30,5 @@ ADD run.sh /run.sh
 RUN sudo chmod +x /run.sh
 
 VOLUME /var/www/misp-dashboard
-
+EXPOSE 8001
 ENTRYPOINT ["/run.sh"]
