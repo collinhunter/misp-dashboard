@@ -1,10 +1,15 @@
 #!/bin/bash
+env
 
 ## disable -e for production systems
 #set -e
 
 ## Debug mode
 #set -x
+
+# Environment
+#MM_LIC = ${MM_LIC}
+
 
 # Functions
 
@@ -146,7 +151,7 @@ mkdir -p data
 pushd data
 # The following lines do not work any more, see: https://blog.maxmind.com/2019/12/18/significant-changes-to-accessing-and-using-geolite2-databases/
 #wget http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz -O GeoLite2-City.tar.gz
-read -p "Please paste your Max Mind License key: " MM_LIC
+#read -p "Please paste your Max Mind License key: " MM_LIC
 while [ "$(sha256sum -c GeoLite2-City.tar.gz.sha256 >/dev/null; echo $?)" != "0" ]; do
   echo "Redownloading GeoLite Assets, if this loops, CTRL-C and investigate"
   wget "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=${MM_LIC}&suffix=tar.gz" -O GeoLite2-City.tar.gz
