@@ -10,7 +10,13 @@ RUN pip3 install flask flask_login redis
 RUN adduser www-data sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
-RUN echo '$MM_LIC_KEY'
+ARG MM_LIC_KEY
+
+RUN echo "MM_LIC_KEY: {$MM_LIC_KEY}"
+
+ENV MM_LIC = $(MM_LIC_KEY}
+
+RUN echo "MM_LIC: ${MM_LIC}"
 
 # Setup www dir
 WORKDIR /var/www
@@ -21,7 +27,7 @@ USER www-data
 RUN git clone --branch master https://github.com/collinhunter/misp-dashboard.git
 WORKDIR /var/www/misp-dashboard
 RUN sudo pip3 install -r requirements.txt
-RUN VIRTUAL_ENV="TUTU"; sudo ./install_dependencies.sh $MM_LIC_KEY
+RUN VIRTUAL_ENV="TUTU"; sudo ./install_dependencies.sh $MM_LIC
 
 
 #Run misp-dashboard
