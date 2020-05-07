@@ -1,5 +1,4 @@
 #!/bin/bash
-env
 
 ## disable -e for production systems
 #set -e
@@ -8,7 +7,7 @@ env
 #set -x
 
 # Environment
-#MM_LIC = ${MM_LIC}
+SET MM_LIC = ${MM_LIC_KEY}
 
 
 # Functions
