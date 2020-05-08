@@ -57,12 +57,12 @@ update_filename=updates.log
 
 [RedisGlobal]
 host=localhost
-port=6250
-misp_web_url = http://0.0.0.0
+port=6379
+misp_web_url = https://misp.ci-soc.ca
 misp_instances = [{
     "name": "misp1",
-    "url": "http://localhost",
-    "zmq": "tcp://localhost:50000"}] 
+    "url": "https://misp.ci-soc.ca",
+    "zmq": "tcp://misp.ci-soc.ca:50000"}] 
 
 #misp_instances = [{
 #    "name": "misp1",
