@@ -18,8 +18,8 @@ RUN chown www-data:www-data /var/www
 USER www-data
 
 #Start installing dashboard
-#RUN git clone --branch master https://github.com/collinhunter/misp-dashboard.git
-RUN git clone --branch master https://github.com/MISP/misp-dashboard.git
+RUN git clone --branch master https://github.com/collinhunter/misp-dashboard.git
+#RUN git clone --branch master https://github.com/MISP/misp-dashboard.git
 WORKDIR /var/www/misp-dashboard
 RUN cd /var/www/misp-dashboard
 RUN sudo -H pip3 install -r requirements.txt
