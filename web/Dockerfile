@@ -11,7 +11,7 @@ RUN adduser www-data sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 ARG MM_LIC_KEY
-
+MM_LIC_KEY=${MM_LIC_KEY}
 # Setup www dir
 WORKDIR /var/www
 RUN chown www-data:www-data /var/www
