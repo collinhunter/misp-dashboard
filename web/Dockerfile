@@ -23,6 +23,7 @@ RUN git clone --branch master https://github.com/collinhunter/misp-dashboard.git
 WORKDIR /var/www/misp-dashboard
 RUN cd /var/www/misp-dashboard
 RUN sudo -H pip3 install -r requirements.txt
+echo ${MM_LIC_KEY}
 RUN VIRTUAL_ENV="TUTU"; sudo -H ./install_dependencies.sh ${MM_LIC_KEY}
 
 
