@@ -5,7 +5,7 @@
 
 ## Debug mode
 #set -x
-echo $1
+#echo $1
 # Functions
 
 get_distribution() {
@@ -19,7 +19,7 @@ get_distribution() {
   echo "$lsb_dist" | tr '[:upper:]' '[:lower:]'
 }
 
-sudo chmod -R g+w . 
+sudo chmod -R g+w .
 
 if ! id zmqs >/dev/null 2>&1; then
 
@@ -141,29 +141,32 @@ mv temp/jquery-jvectormap-2.0.3.min.js ./static/js
 wget http://jvectormap.com/js/jquery-jvectormap-world-mill.js -O ./static/js/jquery-jvectormap-world-mill.js
 
 # maxmind DB
-MM_LIC=$1
-rm -rf data/GeoLite2-City*
-mkdir -p data
-pushd data
+#MM_LIC="3kAM4NhmnPX6kvhh"
+#MM_LIC=$1
+#echo ${MM_LIC}
+##rm -rf data/GeoLite2-City*
+##mkdir -p data
+##pushd data
 # The following lines do not work any more, see: https://blog.maxmind.com/2019/12/18/significant-changes-to-accessing-and-using-geolite2-databases/
 #wget http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz -O GeoLite2-City.tar.gz
 #read -p "Please paste your Max Mind License key: " MM_LIC
-while [ "$(sha256sum -c GeoLite2-City.tar.gz.sha256 >/dev/null; echo $?)" != "0" ]; do
-  echo "Redownloading GeoLite Assets, if this loops, CTRL-C and investigate"
-  wget "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=${MM_LIC}&suffix=tar.gz" -O GeoLite2-City.tar.gz
-  wget "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=${MM_LIC}&suffix=tar.gz.sha256" -O GeoLite2-City.tar.gz.sha256
-  if [[ $? == 6 ]]; then
-    echo "Something is wrong with your License Key, please try entering another one. (You DO NOT need a GeoIP Update key) "
-    #read -p "Please paste your Max Mind License key: " MM_LIC
-  fi
-  sed -i 's/_.*/.tar.gz/' GeoLite2-City.tar.gz.sha256
-  sleep 3
-done
-tar xvfz GeoLite2-City.tar.gz
-ln -s GeoLite2-City_* GeoLite2-City
-rm -rf GeoLite2-City.tar.gz*
-popd
+##while [ "$(sha256sum -c GeoLite2-City.tar.gz.sha256 >/dev/null; echo $?)" != "0" ]; do
+##  echo "Redownloading GeoLite Assets, if this loops, CTRL-C and investigate"
+##  wget "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=${MM_LIC&suffix=tar.gz" -O GeoLite2-City.tar.gz
+##  wget "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=${MM_LIC}&suffix=tar.gz.sha256" -O GeoLite2-City.tar.gz.sha256
+##  if [[ $? == 6 ]]; then
+##    echo "Something is wrong with your License Key2, please try entering another one. (You DO NOT need a GeoIP Update key) "
+##    #read -p "Please paste your Max Mind License key: " MM_LIC
+##  fi
+##  sed -i 's/_.*/.tar.gz/' GeoLite2-City.tar.gz.sha256
+##  sleep 3
+##done
+##tar xvfz GeoLite2-City.tar.gz
+##ln -s GeoLite2-City_* GeoLite2-City
+##rm -rf GeoLite2-City.tar.gz*
+##popd
 
+#echo "Hello"
 # DataTable
 DATATABLE_VERSION="1.10.16"
 wget https://cdn.datatables.net/${DATATABLE_VERSION}/js/jquery.dataTables.min.js -O ./static/js/jquery.dataTables.min.js
